@@ -16,6 +16,10 @@ namespace IMS
 
 		private const string URL = "http://www.ims.gov.il/ims/PublicXML/IMS_001.xml";
 		private const string FORECAST_TIME_FORMAT = "dd/MM/yyyy HH:mm 'UTC'";
+
+		private const int TIME_ZONE_OFFSET = 2;
+		private const int DAYLIGHT_ZIME_ZONE_OFFSET = TIME_ZONE_OFFSET + 1;
+		private const string DAYLIGHT_TIME_SPECIFIER = "IDT";
 		
 		private const string XML_EL_IDENTIFICATION = "Identification";
 		private const string XML_EL_ISSUE_DATE_TIME = "IssueDateTime";
@@ -156,9 +160,17 @@ namespace IMS
 					var hour = int.Parse(match.Groups[DateTimePatternKeys.Hour.ToString()].Value);
 					var minute = int.Parse(match.Groups[DateTimePatternKeys.Min.ToString()].Value);
 					var second = int.Parse(match.Groups[DateTimePatternKeys.Sec.ToString()].Value);
+					var timezone = match.Groups[DateTimePatternKeys.TZone.ToString()].Value;
 					var year = int.Parse(match.Groups[DateTimePatternKeys.Year.ToString()].Value);
 
-					return new DateTime(year, (int)month, day, hour, minute, second);
+					var date = new DateTime(year, (int)month, day, hour, minute, second);
+					var offset = timezone == DAYLIGHT_TIME_SPECIFIER
+						? new TimeSpan(DAYLIGHT_ZIME_ZONE_OFFSET, 0, 0)
+						: new TimeSpan(TIME_ZONE_OFFSET);
+					date -= offset;
+					date = DateTime.SpecifyKind(date, DateTimeKind.Utc);
+
+					return date;
 				});
 		}
 	}

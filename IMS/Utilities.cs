@@ -55,9 +55,14 @@ namespace IMS
 			pattern.AppendFormat(@"\:(?<{0}>", DateTimePatternKeys.Sec)
 				   .Append(@"\d{2})");
 
-			// Pattern for time-zone
-			pattern.Append(" .{3} ");
+			pattern.Append(" ");
 
+			// Pattern for time-zone
+			pattern.AppendFormat("(?<{0}>", DateTimePatternKeys.TZone)
+				   .Append("[A-Z]{3})");
+
+			pattern.Append(" ");
+			
 			// Pattern for the year
 			pattern.AppendFormat(@"(?<{0}>", DateTimePatternKeys.Year)
 				   .Append(@"\d{4})");
@@ -85,6 +90,7 @@ namespace IMS
 		Min,
 		Sec,
 		Year,
+		TZone,
 	}
 
 	internal enum MonthDesignators

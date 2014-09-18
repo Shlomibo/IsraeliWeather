@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="DataFile.cs" />
     <Compile Include="HourlyLocalForecast.cs" />
+    <Compile Include="LocalForecasts\Codes.cs" />
     <Compile Include="LocalForecasts\Forecast.cs" />
     <Compile Include="LocalForecasts\HourlyForecast.cs" />
     <Compile Include="LocalForecasts\HourlyForecasts.cs" />
