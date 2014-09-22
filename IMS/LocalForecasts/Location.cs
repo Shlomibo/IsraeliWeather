@@ -9,14 +9,6 @@ namespace IMS.LocalForecasts
 {
 	public sealed class Location
 	{
-		#region Consts
-
-		private const double MIN_LATITUDE = -90;
-		private const double MAX_LATITUDE = 90;
-		private const double MIN_LONGITUDE = -180;
-		private const double MAX_LONGITUDE = 180;
-		#endregion
-
 		#region Fields
 
 		private readonly string name;
@@ -66,12 +58,14 @@ namespace IMS.LocalForecasts
 				throw new ArgumentException("name");
 			}
 
-			if ((latitude < MIN_LATITUDE) || (latitude > MAX_LATITUDE))
+			if ((latitude < Utilities.Units.MIN_LATITUDE) ||
+				(latitude > Utilities.Units.MAX_LATITUDE))
 			{
 				throw new ArgumentOutOfRangeException("latitude");
 			}
 
-			if ((longitude < MIN_LONGITUDE) || (longitude > MAX_LONGITUDE))
+			if ((longitude < Utilities.Units.MIN_LONGITUDE) ||
+				(longitude > Utilities.Units.MAX_LONGITUDE))
 			{
 				throw new ArgumentOutOfRangeException("longitude");
 			}

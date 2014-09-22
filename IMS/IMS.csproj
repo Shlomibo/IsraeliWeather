@@ -37,13 +37,18 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityDailyForecasts\Forecast.cs" />
+    <Compile Include="CityDailyForecasts\Forecasts.cs" />
+    <Compile Include="CityDailyForecasts\Location.cs" />
+    <Compile Include="CityForecasts.cs" />
     <Compile Include="DataFile.cs" />
     <Compile Include="HourlyLocalForecast.cs" />
-    <Compile Include="LocalForecasts\Codes.cs" />
+    <Compile Include="CityDailyForecasts\Codes.cs" />
     <Compile Include="LocalForecasts\Forecast.cs" />
     <Compile Include="LocalForecasts\HourlyForecast.cs" />
     <Compile Include="LocalForecasts\HourlyForecasts.cs" />
     <Compile Include="LocalForecasts\Location.cs" />
+    <Compile Include="CityDailyForecasts\Wind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>

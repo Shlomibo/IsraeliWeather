@@ -10,6 +10,23 @@ namespace IMS
 	{
 		private static Lazy<string> dateTimePattern = new Lazy<string>(() => CreateDateTimePattern(), true);
 
+		public static int Hash(IEnumerable<object> objects)
+		{
+			const int initial = 29;
+			const int shift = 6;
+
+			return objects.Select(obj => obj == null
+										 ? 0
+										 : obj.GetHashCode())
+						 .Aggregate(
+							 initial, 
+							 (hash, objHash) => (hash << shift) - hash + objHash);
+		}
+
+		public static int Hash(params object[] objects)
+		{
+			return Hash((IEnumerable<object>)objects);
+		}
 
 		public static string DateTimePattern
 		{
@@ -68,6 +85,17 @@ namespace IMS
 				   .Append(@"\d{4})");
 
 			return pattern.ToString();
+		}
+
+		public static class Units
+		{
+			#region Consts
+
+			public const double MIN_LATITUDE = -90;
+			public const double MAX_LATITUDE = 90;
+			public const double MIN_LONGITUDE = -180;
+			public const double MAX_LONGITUDE = 180;
+			#endregion
 		}
 
 		private enum DayOfTheWeek

@@ -1,4 +1,4 @@
-﻿namespace IMS.LocalForecasts
+﻿namespace IMS.CityDailyForecasts
 {
 	public enum WeatherCode
 	{

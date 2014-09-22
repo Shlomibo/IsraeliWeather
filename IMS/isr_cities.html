@@ -1,0 +1,372 @@
+<!DOCTYPE HTML []>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="Generator" content="LINQ to XML, baby!" />
+    <style type="text/css">
+body {
+	margin: 0.3em 0.3em 0.4em 0.4em;
+	font-family: Verdana;
+	font-size: 80%;
+	background: white;
+}
+
+p, pre {
+	margin:0;
+	padding:0;
+	font-family: Verdana;
+}
+
+table {
+	border-collapse: collapse;
+	border: 2px solid #17b;
+	margin: 0.3em 0.2em;
+}
+
+table.limit {
+	border-collapse: collapse;
+	border-bottom: 2px solid #c31;
+}
+
+td, th {
+	vertical-align: top;
+	border: 1px solid #aaa;
+	padding: 0.1em 0.2em;
+	margin: 0;
+}
+
+th {
+	text-align: left;
+	background-color: #ddd;
+	border: 1px solid #777;
+	font-family: tahoma;
+	font-size:90%;
+	font-weight: bold;
+}
+
+th.member {
+	padding: 0.1em 0.2em 0.1em 0.2em;
+}
+
+td.typeheader {
+	font-family: tahoma;
+	font-size: 100%;
+	font-weight: bold;
+	background-color: #17b;
+	color: white;
+	padding: 0 0.2em 0.15em 0.1em;
+}
+
+td.n { text-align: right }
+
+a:link.typeheader, a:visited.typeheader, a:link.extenser, a:visited.extenser {
+	font-family: tahoma;
+	font-size: 90%;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: #17b;
+	color: white;
+	float:left;
+}
+
+a:link.extenser, a:visited.extenser {
+	float:right; 
+	padding-left:2pt;
+	margin-left:4pt
+}
+
+span.typeglyph, span.typeglyphx {
+	padding: 0 0.2em 0 0;
+	margin: 0;
+}
+
+span.extenser, span.extenserx {	
+	margin-top:1.2pt;
+}
+
+span.typeglyph, span.extenser {
+	font-family: webdings;
+}
+
+span.typeglyphx, span.extenserx {
+	font-family: arial;
+	font-weight: bold;
+	margin: 2px;
+}
+
+table.group {
+	border: none;
+	margin: 0;
+}
+
+td.group {
+	border: none;
+	padding: 0 0.1em;
+}
+
+div.spacer { margin: 0.6em 0; }
+
+table.headingpresenter {
+	border: none;
+	border-left: 3px dotted #1a5;
+	margin: 1em 0em 1.2em 0.15em;
+}
+
+th.headingpresenter {
+	font-family: Arial;
+	border: none;
+	padding: 0 0 0.2em 0.5em;
+	background-color: white;
+	color: green;
+	font-size: 110%;        
+}
+
+td.headingpresenter {
+	border: none;
+	padding: 0 0 0 0.6em;
+}
+
+td.summary { 
+	background-color: #def;
+	color: #024;
+	font-family: Tahoma;
+	padding: 0 0.1em 0.1em 0.1em;
+}
+
+td.columntotal {
+	font-family: Tahoma;
+	background-color: #eee;
+	font-weight: bold;
+	color: #17b;
+	font-size:90%;
+	text-align:right;
+}
+
+span.graphbar {
+	background: #17b;
+	color: #17b;
+	margin-left: -2px;
+	margin-right: -2px;
+}
+
+a:link.graphcolumn, a:visited.graphcolumn {
+	color: #17b;
+	text-decoration: none;
+	font-weight: bold;
+	font-family: Arial;
+	font-size: 110%;
+	letter-spacing: -0.4em;	
+	margin-left: 0.3em;
+}
+
+a:link.collection, a:visited.collection { color: green }
+
+a:link.reference, a:visited.reference { color:blue }
+
+i { color: green; }
+
+em { color: red; }
+
+span.highlight { background: #ff8; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="spacer">
+        <table id="t1">
+          <tr>
+            <td class="typeheader" colspan="2">ø</td>
+          </tr>
+          <tr id="sum2">
+            <td colspan="2" class="summary">{ Name = Maximum relative humidity, Count = 15, Values = 20
+65
+40
+25
+45
+25
+35
+50
+35
+35 }</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Name</th>
+            <td>Maximum relative humidity</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.Int32">Count</th>
+            <td>15</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Values</th>
+            <td>20<br />65<br />40<br />25<br />45<br />25<br />35<br />50<br />35<br />35</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="spacer">
+        <table id="t3">
+          <tr>
+            <td class="typeheader" colspan="2">ø</td>
+          </tr>
+          <tr id="sum4">
+            <td colspan="2" class="summary">{ Name = Maximum temperature, Count = 60, Values = 36
+36
+37
+38
+30
+30
+30
+29
+32
+32 }</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Name</th>
+            <td>Maximum temperature</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.Int32">Count</th>
+            <td>60</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Values</th>
+            <td>36<br />36<br />37<br />38<br />30<br />30<br />30<br />29<br />32<br />32</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="spacer">
+        <table id="t5">
+          <tr>
+            <td class="typeheader" colspan="2">ø</td>
+          </tr>
+          <tr id="sum6">
+            <td colspan="2" class="summary">{ Name = Minimum relative humidity, Count = 15, Values = 20
+65
+40
+25
+45
+25
+35
+50
+35
+35 }</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Name</th>
+            <td>Minimum relative humidity</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.Int32">Count</th>
+            <td>15</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Values</th>
+            <td>20<br />65<br />40<br />25<br />45<br />25<br />35<br />50<br />35<br />35</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="spacer">
+        <table id="t7">
+          <tr>
+            <td class="typeheader" colspan="2">ø</td>
+          </tr>
+          <tr id="sum8">
+            <td colspan="2" class="summary">{ Name = Minimum temperature, Count = 60, Values = 24
+24
+25
+25
+23
+23
+24
+24
+18
+17 }</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Name</th>
+            <td>Minimum temperature</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.Int32">Count</th>
+            <td>60</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Values</th>
+            <td>24<br />24<br />25<br />25<br />23<br />23<br />24<br />24<br />18<br />17</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="spacer">
+        <table id="t9">
+          <tr>
+            <td class="typeheader" colspan="2">ø</td>
+          </tr>
+          <tr id="sum10">
+            <td colspan="2" class="summary">{ Name = Weather code, Count = 60, Values = 1310
+1310
+1310
+1310
+1240
+1240
+1240
+1240
+1240
+1240 }</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Name</th>
+            <td>Weather code</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.Int32">Count</th>
+            <td>60</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Values</th>
+            <td>1310<br />1310<br />1310<br />1310<br />1240<br />1240<br />1240<br />1240<br />1240<br />1240</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="spacer">
+        <table id="t11">
+          <tr>
+            <td class="typeheader" colspan="2">ø</td>
+          </tr>
+          <tr id="sum12">
+            <td colspan="2" class="summary">{ Name = Wind direction and speed, Count = 15, Values = 045/15-35
+225-315/15-25
+270-315/5-15
+045-315/10-30
+225-315/10-25
+135-225/10-25
+225-315/10-20
+2...</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Name</th>
+            <td>Wind direction and speed</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.Int32">Count</th>
+            <td>15</td>
+          </tr>
+          <tr>
+            <th class="member" title="System.String">Values</th>
+            <td>045/15-35<br />225-315/15-25<br />270-315/5-15<br />045-315/10-30<br />225-315/10-25<br />135-225/10-25<br />225-315/10-20<br />225-315/10-25<br />315/15-25<br />225-315/10-30</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
