@@ -14,53 +14,21 @@ namespace IMS.CityDailyForecasts
 		private const int MAX_VALID_HUMIDITY = 100;
 		#endregion
 
-		#region Fields
-
-		private readonly DateTime date;
-		private readonly int? minRelativeHumidity;
-		private readonly int? maxRelativeHumidity;
-		private readonly int minTemperature;
-		private readonly int maxTemperature;
-		private readonly WeatherCode weatherCode;
-		private readonly Wind? wind;
-		#endregion
-
 		#region Properties
 
-		public DateTime Date
-		{
-			get { return this.date; }
-		}
+		public DateTime Date { get; }
 
-		public int? MinRelativeHumidity
-		{
-			get { return this.minRelativeHumidity; }
-		}
+		public int? MinRelativeHumidity { get; }
 
-		public int? MaxRelativeHumidity
-		{
-			get { return this.maxRelativeHumidity; }
-		}
+		public int? MaxRelativeHumidity { get; }
 
-		public int MinTemperature
-		{
-			get { return this.minTemperature; }
-		}
+		public int MinTemperature { get; }
 
-		public int MaxTemperature
-		{
-			get { return this.maxTemperature; }
-		}
+		public int MaxTemperature { get; }
 
-		public WeatherCode WeatherCode
-		{
-			get { return this.weatherCode; }
-		}
+		public WeatherCode WeatherCode { get; }
 
-		public Wind? Wind
-		{
-			get { return this.wind; }
-		}
+		public Wind? Wind { get; }
 
 		public Forecast(
 			DateTime date, 
@@ -70,13 +38,13 @@ namespace IMS.CityDailyForecasts
 		{
 			if (!Enum.IsDefined(typeof(WeatherCode), weatherCode))
 			{
-				throw new ArgumentException("Invalid weatherCode");
+				throw new ArgumentException("Invalid " + nameof(weatherCode));
 			}
 
-			this.date = date;
-			this.minTemperature = minTemperature;
-			this.maxTemperature = maxTemperature;
-			this.weatherCode = weatherCode;
+			this.Date = date;
+			this.MinTemperature = minTemperature;
+			this.MaxTemperature = maxTemperature;
+			this.WeatherCode = weatherCode;
 		}
 
 		public Forecast(
@@ -91,17 +59,17 @@ namespace IMS.CityDailyForecasts
 		{
 			if ((minRelativeHumidity < MIN_VALID_HUMIDITY) || (minRelativeHumidity > MAX_VALID_HUMIDITY))
 			{
-				throw new ArgumentOutOfRangeException("minRelativeHumidity");
+				throw new ArgumentOutOfRangeException(nameof(minRelativeHumidity));
 			}
 
 			if ((maxRelativeHumidity < MIN_VALID_HUMIDITY) || (maxRelativeHumidity > MAX_VALID_HUMIDITY))
 			{
-				throw new ArgumentOutOfRangeException("maxRelativeHumidity");
+				throw new ArgumentOutOfRangeException(nameof(maxRelativeHumidity));
 			}
 
-			this.minRelativeHumidity = minRelativeHumidity;
-			this.maxRelativeHumidity = maxRelativeHumidity;
-			this.wind = wind;
+			this.MinRelativeHumidity = minRelativeHumidity;
+			this.MaxRelativeHumidity = maxRelativeHumidity;
+			this.Wind = wind;
 		}
 		#endregion
 
@@ -162,10 +130,8 @@ namespace IMS.CityDailyForecasts
 			}
 		}
 
-		public static bool operator !=(Forecast left, Forecast right)
-		{
-			return !(left == right);
-		}
+		public static bool operator !=(Forecast left, Forecast right) =>
+			!(left == right);
 		#endregion
 	}
 }

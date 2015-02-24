@@ -30,34 +30,17 @@ namespace IMS.CityDailyForecasts
 				RGX_MIN_SPEED,
 				RGX_MAX_SPEED),
 			RegexOptions.ExplicitCapture);
-
-		private readonly int minDirection;
-		private readonly int maxDirection;
-		private readonly int minSpeed;
-		private readonly int maxSpeed;
 		#endregion
 
 		#region Properties
 
-		public int MinDirection
-		{
-			get { return this.minDirection; }
-		}
+		public int MinDirection { get; }
 
-		public int MaxDirection
-		{
-			get { return this.maxDirection; }
-		}
+		public int MaxDirection { get; }
 
-		public int MinSpeed
-		{
-			get { return this.minSpeed; }
-		}
+		public int MinSpeed { get; }
 
-		public int MaxSpeed
-		{
-			get { return this.maxSpeed; }
-		}
+		public int MaxSpeed { get; }
 		#endregion
 
 		#region Ctor
@@ -67,39 +50,39 @@ namespace IMS.CityDailyForecasts
 		{
 			if (minSpeed < MIN_VALID_SPEED)
 			{
-				throw new ArgumentOutOfRangeException("minSpeed");
+				throw new ArgumentOutOfRangeException(nameof(minSpeed));
 			}
 
 			if (maxSpeed < MIN_VALID_SPEED)
 			{
-				throw new ArgumentOutOfRangeException("maxSpeed");
+				throw new ArgumentOutOfRangeException(nameof(maxSpeed));
 			}
 
 			if (maxSpeed < minSpeed)
 			{
-				throw new ArgumentException("minSpeed cannot be greater than maxSpeed");
+				throw new ArgumentException($"{nameof(minSpeed)} cannot be greater than {nameof(maxSpeed)}");
 			}
 
 			if ((direction < MIN_VALID_DIRECTION) || (direction > MAX_VALID_DIRECTION))
 			{
-				throw new ArgumentOutOfRangeException("direction");
+				throw new ArgumentOutOfRangeException(nameof(direction));
 			}
 
 			if (maxDirection.HasValue &&
 				((maxDirection < MIN_VALID_DIRECTION) || (maxDirection > MAX_VALID_DIRECTION)))
 			{
-				throw new ArgumentOutOfRangeException("maxDirection");
+				throw new ArgumentOutOfRangeException(nameof(maxDirection));
 			}
 
 			if (maxDirection.HasValue && (maxDirection > direction))
 			{
-				throw new ArgumentException("direction cannot be greater than maxDirection");
+				throw new ArgumentException($"{nameof(direction)} cannot be greater than {nameof(maxDirection)}");
 			}
 
-			this.minSpeed = minSpeed;
-			this.maxSpeed = maxSpeed;
-			this.minDirection = direction;
-			this.maxDirection = maxDirection ?? direction;
+			this.MinSpeed = minSpeed;
+			this.MaxSpeed = maxSpeed;
+			this.MinDirection = direction;
+			this.MaxDirection = maxDirection ?? direction;
 		}
 		#endregion
 
@@ -124,22 +107,18 @@ namespace IMS.CityDailyForecasts
 			return Equals((Wind)obj);
 		}
 
-		public override int GetHashCode()
-		{
-			return Utilities.Hash(
+		public override int GetHashCode() =>
+			Utilities.Hash(
 				this.MinSpeed,
 				this.MaxSpeed,
 				this.MinDirection,
 				this.MaxDirection);
-		}
 
-		public bool Equals(Wind other)
-		{
-			return (this.MinSpeed == other.MinSpeed) &&
-				(this.MaxSpeed == other.MaxSpeed) &&
-				(this.MinDirection == other.MinDirection) &&
-				(this.MaxDirection == other.MaxDirection);
-		}
+		public bool Equals(Wind other) =>
+			(this.MinSpeed == other.MinSpeed) &&
+			(this.MaxSpeed == other.MaxSpeed) &&
+			(this.MinDirection == other.MinDirection) &&
+			(this.MaxDirection == other.MaxDirection);
 
 		public override string ToString()
 		{
@@ -193,7 +172,7 @@ namespace IMS.CityDailyForecasts
 		{
 			if (s == null)
 			{
-				throw new ArgumentNullException("s");
+				throw new ArgumentNullException(nameof(s));
 			}
 
 			Wind wind;
@@ -209,15 +188,11 @@ namespace IMS.CityDailyForecasts
 
 		#region Operator
 
-		public static bool operator ==(Wind left, Wind right)
-		{
-			return left.Equals(right);
-		}
+		public static bool operator ==(Wind left, Wind right) =>
+			left.Equals(right);
 
-		public static bool operator !=(Wind left, Wind right)
-		{
-			return !(left == right);
-		}
+		public static bool operator !=(Wind left, Wind right) =>
+			!(left == right);
 		#endregion
 	}
 }

@@ -13,25 +13,18 @@ namespace IMS
 		public static int Hash(IEnumerable<object> objects)
 		{
 			const int initial = 29;
-			const int shift = 6;
+			const int shift = 7;
 
-			return objects.Select(obj => obj == null
-										 ? 0
-										 : obj.GetHashCode())
+			return objects.Select(obj => obj?.GetHashCode() ?? 0)
 						 .Aggregate(
 							 initial, 
 							 (hash, objHash) => (hash << shift) - hash + objHash);
 		}
 
-		public static int Hash(params object[] objects)
-		{
-			return Hash((IEnumerable<object>)objects);
-		}
+		public static int Hash(params object[] objects) =>
+			Hash((IEnumerable<object>)objects);
 
-		public static string DateTimePattern
-		{
-			get { return dateTimePattern.Value; }
-		}
+		public static string DateTimePattern =>dateTimePattern.Value; 
 
 		private static string CreateDateTimePattern()
 		{

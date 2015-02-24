@@ -11,26 +11,16 @@ namespace IMS.LocalForecasts
 	{
 		#region Fields
 
-		private readonly DateTime issuedTime;
 		private readonly HourlyForecast[] forecasts;
 		#endregion
 
 		#region Properties
 
-		public DateTime IssuedTime
-		{
-			get { return this.issuedTime; }
-		}
+		public DateTime IssuedTime { get; }
 
-		public int Count
-		{
-			get { return this.forecasts.Length; }
-		}
+		public int Count => this.forecasts.Length;
 
-		bool ICollection<HourlyForecast>.IsReadOnly
-		{
-			get { return true; }
-		}
+		bool ICollection<HourlyForecast>.IsReadOnly => true;
 		#endregion
 
 		#region Ctor
@@ -39,15 +29,17 @@ namespace IMS.LocalForecasts
 		{
 			if (forecasts == null)
 			{
-				throw new ArgumentNullException("forecasts");
+				throw new ArgumentNullException(nameof(forecasts));
 			}
 
-			this.issuedTime = issuedTime;
+			this.IssuedTime = issuedTime;
 			this.forecasts = forecasts.Select(forecast =>
 				{
 					if (forecast == null)
 					{
-						throw new ArgumentException("'forecasts' cannot contain items which are null", "forecasts");
+						throw new ArgumentException(
+							$"'{nameof(forecasts)}' cannot contain items which are null", 
+							nameof(forecasts));
 					}
 
 					return forecast;
@@ -57,27 +49,23 @@ namespace IMS.LocalForecasts
 
 		#region Methods
 
-		public void Add(HourlyForecast item)
+		void ICollection<HourlyForecast>.Add(HourlyForecast item)
 		{
 			throw new NotSupportedException();
 		}
 
-		public void Clear()
+		void ICollection<HourlyForecast>.Clear()
 		{
 			throw new NotSupportedException();
 		}
 
-		public bool Contains(HourlyForecast item)
-		{
-			return this.forecasts.Contains(item);
-		}
+		public bool Contains(HourlyForecast item) =>
+			this.forecasts.Contains(item);
 
-		public void CopyTo(HourlyForecast[] array, int arrayIndex)
-		{
+		public void CopyTo(HourlyForecast[] array, int arrayIndex) =>
 			this.forecasts.CopyTo(array, arrayIndex);
-		}
 
-		public bool Remove(HourlyForecast item)
+		bool ICollection<HourlyForecast>.Remove(HourlyForecast item)
 		{
 			throw new NotSupportedException();
 		}
@@ -90,10 +78,8 @@ namespace IMS.LocalForecasts
 			}
 		}
 
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
-		}
+		IEnumerator IEnumerable.GetEnumerator() =>
+			GetEnumerator();
 		#endregion
 	}
 }

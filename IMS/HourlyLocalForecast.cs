@@ -57,7 +57,7 @@ namespace IMS
 
 		protected override async Task<HourlyForecasts> ParseData(XDocument fileData)
 		{
-			Debug.Assert(fileData != null, "fileData is null.");
+			Debug.Assert(fileData != null, nameof(fileData) + " is null.");
 
 			DateTime issuedDate = await ParseDate(fileData.Root
 														  .Element(XML_EL_IDENTIFICATION)
@@ -73,7 +73,7 @@ namespace IMS
 
 		private async Task<IEnumerable<HourlyForecast>> ParseAllForecasts(IEnumerable<XElement> locations)
 		{
-			Debug.Assert(locations != null, "locations is null.");
+			Debug.Assert(locations != null, nameof(locations) + " is null.");
 
 			IEnumerable<Task<HourlyForecast>> locationsData = locations.Select(location => ParseLocation(location));
 
@@ -84,7 +84,7 @@ namespace IMS
 
 		private async Task<HourlyForecast> ParseLocation(XElement location)
 		{
-			Debug.Assert(location != null, "location is null.");
+			Debug.Assert(location != null, nameof(location) + " is null.");
 
 			XElement locationData = location.Element(XML_EL_LOCATION_META_DATA);
 			
@@ -107,7 +107,7 @@ namespace IMS
 
 		private async Task<IEnumerable<Forecast>> ParseLocationForecasts(IEnumerable<XElement> forecasts)
 		{
-			Debug.Assert(forecasts != null, "forecasts is null.");
+			Debug.Assert(forecasts != null, nameof(forecasts) + " is null.");
 
 			IEnumerable<Task<Forecast>> forecastsTasks = forecasts.Select(forecast => ParseForecast(forecast));
 			await Task.WhenAll(forecastsTasks);
@@ -119,7 +119,7 @@ namespace IMS
 		{
 			return Task.Run(() =>
 				{
-					Debug.Assert(forecast != null, "forecast is null.");
+					Debug.Assert(forecast != null, nameof(forecast) + " is null.");
 
 					var time = DateTime.ParseExact(
 						(string)forecast.Element(XML_EL_FORECAST_TIME),
@@ -151,7 +151,7 @@ namespace IMS
 					{
 						throw new FormatException("dateString is in the wrong format");
 					}
-
+					
 					var month = (MonthDesignators)Enum.Parse(
 						typeof(MonthDesignators),
 						match.Groups[DateTimePatternKeys.Mon.ToString()].Value);

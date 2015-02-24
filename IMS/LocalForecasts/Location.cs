@@ -9,35 +9,15 @@ namespace IMS.LocalForecasts
 {
 	public sealed class Location
 	{
-		#region Fields
-
-		private readonly string name;
-		private readonly double latitude;
-		private readonly double longitude;
-		private readonly int altitude;
-		#endregion
-
 		#region Properties
 
-		public string Name
-		{
-			get { return this.name; }
-		}
+		public string Name { get; }
 
-		public double Latitude
-		{
-			get { return this.latitude; }
-		}
+		public double Latitude { get; }
 
-		public double Longitude
-		{
-			get { return this.longitude; }
-		}
+		public double Longitude { get; }
 
-		public int Altitude
-		{
-			get { return this.altitude; }
-		}
+		public int Altitude { get; }
 		#endregion
 
 		#region Ctor
@@ -50,30 +30,30 @@ namespace IMS.LocalForecasts
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				throw new ArgumentNullException(nameof(name));
 			}
 
 			if (string.IsNullOrEmpty(name))
 			{
-				throw new ArgumentException("name");
+				throw new ArgumentException(nameof(name));
 			}
 
 			if ((latitude < Utilities.Units.MIN_LATITUDE) ||
 				(latitude > Utilities.Units.MAX_LATITUDE))
 			{
-				throw new ArgumentOutOfRangeException("latitude");
+				throw new ArgumentOutOfRangeException(nameof(latitude));
 			}
 
 			if ((longitude < Utilities.Units.MIN_LONGITUDE) ||
 				(longitude > Utilities.Units.MAX_LONGITUDE))
 			{
-				throw new ArgumentOutOfRangeException("longitude");
+				throw new ArgumentOutOfRangeException(nameof(longitude));
 			}
 
-			this.name = name;
-			this.latitude = latitude;
-			this.longitude = longitude;
-			this.altitude = altitude;
+			this.Name = name;
+			this.Latitude = latitude;
+			this.Longitude = longitude;
+			this.Altitude = altitude;
 		}
 		#endregion
 	}

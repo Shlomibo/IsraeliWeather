@@ -12,23 +12,15 @@ namespace IMS
 		#region Fields
 
 		private XDocument file;
-		private readonly Uri fileUrl;
-		private readonly TimeSpan updateInterval;
 		#endregion
 
 		#region Properties
 
-		protected Uri FileUrl
-		{
-			get { return this.fileUrl; }
-		}
+		protected Uri FileUrl { get; }
 
 		protected DateTime? LastUpdate { get; set; }
 
-		protected TimeSpan UpdateInterval
-		{
-			get { return this.updateInterval; }
-		}
+		protected TimeSpan UpdateInterval { get; }
 		#endregion
 
 		#region Ctor
@@ -37,16 +29,16 @@ namespace IMS
 		{
 			if (fileUrl == null)
 			{
-				throw new ArgumentNullException("fileUrl");
+				throw new ArgumentNullException(nameof(fileUrl));
 			}
 
 			if (updateInterval < TimeSpan.Zero)
 			{
-				throw new ArgumentException("updateInterval");
+				throw new ArgumentException(nameof(updateInterval));
 			}
 
-			this.fileUrl = fileUrl;
-			this.updateInterval = updateInterval;
+			this.FileUrl = fileUrl;
+			this.UpdateInterval = updateInterval;
 		}
 		#endregion
 

@@ -1,8 +1,7 @@
 ﻿using IMS.CityDailyForecasts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -33,6 +32,8 @@ namespace IMS
 
 		protected override async Task<Forecasts> ParseData(XDocument fileData)
 		{
+			Debug.Assert(fileData != null, nameof(fileData) + " is null.");
+
 			var locationsTask = ParseLocations(fileData.Root.Elements(XML_EL_LOCATION));
 			DateTime issuedDate = DateTime.ParseExact(
 				(string)fileData.Root.Element(XML_EL_IDENTIFICATION)

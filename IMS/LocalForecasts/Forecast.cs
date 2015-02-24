@@ -16,41 +16,17 @@ namespace IMS.LocalForecasts
 		private const int MAX_PERCENTAGE = 100;
 		#endregion
 
-		#region Fields
-
-		private readonly DateTime time;
-		private readonly float temperature;
-		private readonly int realtiveHumidity;
-		private readonly float windSpeed;
-		private readonly int windDirection;
-		#endregion
-
 		#region Properties
 
-		public DateTime Time
-		{
-			get { return this.time; }
-		}
+		public DateTime Time { get; }
 
-		public float Temperature
-		{
-			get { return this.temperature; }
-		}
+		public float Temperature { get; }
 
-		public int RelativeHumidity
-		{
-			get { return this.realtiveHumidity; }
-		}
+		public int RelativeHumidity { get; }
 
-		public float WindSpeed
-		{
-			get { return this.windSpeed; }
-		}
+		public float WindSpeed { get; }
 
-		public int WindDirection
-		{
-			get { return this.windDirection; }
-		}
+		public int WindDirection { get; }
 		#endregion
 
 		#region Ctor
@@ -64,24 +40,24 @@ namespace IMS.LocalForecasts
 		{
 			if ((relativeHumidity < MIN_PERCENTAGE) || (relativeHumidity > MAX_PERCENTAGE))
 			{
-				throw new ArgumentOutOfRangeException("relativeHumidity");
+				throw new ArgumentOutOfRangeException(nameof(relativeHumidity));
 			}
 
 			if (windSpeed < 0)
 			{
-				throw new ArgumentOutOfRangeException("windSpeed");
+				throw new ArgumentOutOfRangeException(nameof(windSpeed));
 			}
 
 			if ((windDirection < MIN_DIRECTION) || (windDirection > MAX_DIRECTION))
 			{
-				throw new ArgumentOutOfRangeException("windDirection");
+				throw new ArgumentOutOfRangeException(nameof(windDirection));
 			}
 
-			this.time = time;
-			this.temperature = temperature;
-			this.realtiveHumidity = relativeHumidity;
-			this.windSpeed = windSpeed;
-			this.windDirection = windDirection;
+			this.Time = time;
+			this.Temperature = temperature;
+			this.RelativeHumidity = relativeHumidity;
+			this.WindSpeed = windSpeed;
+			this.WindDirection = windDirection;
 		}
 		#endregion
 	}

@@ -9,23 +9,11 @@ namespace IMS.LocalForecasts
 {
 	public sealed class HourlyForecast 
 	{
-		#region Fields
-
-		private readonly Location location;
-		private readonly IReadOnlyList<Forecast> forecasts; 
-		#endregion
-
 		#region Properties
 
-		public Location Location
-		{
-			get { return this.location; }
-		}
+		public Location Location { get; }
 
-		public IReadOnlyList<Forecast> Forecasts
-		{
-			get { return this.forecasts; }
-		}
+		public IReadOnlyList<Forecast> Forecasts { get; }
 		#endregion
 
 		#region Ctor
@@ -36,16 +24,16 @@ namespace IMS.LocalForecasts
 		{
 			if (location == null)
 			{
-				throw new ArgumentNullException("location");
+				throw new ArgumentNullException(nameof(location));
 			}
 
 			if (forecasts == null)
 			{
-				throw new ArgumentNullException("forecasts");
+				throw new ArgumentNullException(nameof(forecasts));
 			}
 
-			this.location = location;
-			this.forecasts = new ReadOnlyCollection<Forecast>(forecasts.OrderBy(forecast => forecast.Time)
+			this.Location = location;
+			this.Forecasts = new ReadOnlyCollection<Forecast>(forecasts.OrderBy(forecast => forecast.Time)
 																	   .ToArray());
 		}
 		#endregion

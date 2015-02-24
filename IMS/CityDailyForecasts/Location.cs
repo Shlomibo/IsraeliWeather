@@ -9,60 +9,25 @@ namespace IMS.CityDailyForecasts
 {
 	public sealed class Location
 	{
-		#region Fields
-
-		private readonly int id;
-		private readonly string nameEnglish;
-		private readonly string nameHebrew;
-		private readonly float latitude;
-		private readonly float longitude;
-		private readonly string remarksEnglish;
-		private readonly string remarksHebrew;
-		private readonly string remarks;
-		private readonly ICollection<Forecast> forecasts;
-		#endregion
-
 		#region Properties
 
-		public int Id
-		{
-			get { return this.id; }
-		}
+		public int Id { get; }
 
-		public string NameEnglish
-		{
-			get { return this.nameEnglish; }
-		}
+		public string NameEnglish { get; }
 
-		public string NameHebrew
-		{
-			get { return this.nameHebrew; }
-		}
+		public string NameHebrew { get; }
 
-		public float Latitude
-		{
-			get { return this.latitude; }
-		}
+		public float Latitude { get; }
 
-		public float Longitude
-		{
-			get { return this.longitude; }
-		}
+		public float Longitude { get; }
 
-		public string RemarksEnglish
-		{
-			get { return this.remarksEnglish; }
-		}
+		public string RemarksEnglish { get; }
 
-		public string RemarksHebrew
-		{
-			get { return this.remarksHebrew; }
-		}
+		public string RemarksHebrew { get; }
 
-		public string Remarks
-		{
-			get { return this.remarks; }
-		}
+		public string Remarks { get; }
+
+		public ICollection<Forecast> Forecasts { get; }
 		#endregion
 
 		#region Ctors
@@ -80,41 +45,41 @@ namespace IMS.CityDailyForecasts
 		{
 			if (nameEnglish == null)
 			{
-				throw new ArgumentNullException("nameEnglish");
+				throw new ArgumentNullException(nameof(nameEnglish));
 			}
 
 			if (nameHebrew == null)
 			{
-				throw new ArgumentNullException("nameHebrew");
+				throw new ArgumentNullException(nameof(nameHebrew));
 			}
 
 			if (forecasts == null)
 			{
-				throw new ArgumentNullException("forecasts");
+				throw new ArgumentNullException(nameof(forecasts));
 			}
 
 			if ((latitude < Utilities.Units.MIN_LATITUDE) ||
 				(latitude > Utilities.Units.MAX_LATITUDE))
 			{
-				throw new ArgumentOutOfRangeException("latitude");
+				throw new ArgumentOutOfRangeException(nameof(latitude));
 			}
 
 			if ((longitude < Utilities.Units.MIN_LONGITUDE) ||
 				(longitude > Utilities.Units.MAX_LONGITUDE))
 			{
-				throw new ArgumentOutOfRangeException("longitude");
+				throw new ArgumentOutOfRangeException(nameof(longitude));
 			}
 
-			this.id = id;
-			this.nameEnglish = nameEnglish;
-			this.nameHebrew = nameHebrew;
-			this.latitude = latitude;
-			this.longitude = longitude;
-			this.remarksEnglish = remarksEnglish;
-			this.remarksHebrew = remarksHebrew;
-			this.remarks = remarks;
+			this.Id = id;
+			this.NameEnglish = nameEnglish;
+			this.NameHebrew = nameHebrew;
+			this.Latitude = latitude;
+			this.Longitude = longitude;
+			this.RemarksEnglish = remarksEnglish;
+			this.RemarksHebrew = remarksHebrew;
+			this.Remarks = remarks;
 
-			this.forecasts = new ReadOnlyCollection<Forecast>(forecasts.Where(forecast => forecast != null)
+			this.Forecasts = new ReadOnlyCollection<Forecast>(forecasts.Where(forecast => forecast != null)
 																	   .OrderBy(forecast => forecast.Date)
 																	   .ToArray());
 		}

@@ -9,23 +9,11 @@ namespace IMS.CityDailyForecasts
 {
 	public sealed class Forecasts
 	{
-		#region Fields
-
-		private readonly DateTime issuedDate;
-		private readonly ICollection<Location> locations;
-		#endregion
-
 		#region Properties
 
-		public DateTime IssuedDate
-		{
-			get { return issuedDate; }
-		}
+		public DateTime IssuedDate { get; }
 
-		public ICollection<Location> Locations
-		{
-			get { return locations; }
-		}
+		public ICollection<Location> Locations { get; }
 		#endregion
 
 		#region Ctor
@@ -34,16 +22,17 @@ namespace IMS.CityDailyForecasts
 		{
 			if (locations == null)
 			{
-				throw new ArgumentNullException("locations");
+				throw new ArgumentNullException(nameof(locations));
 			}
 
-			this.issuedDate = issuedDate;
+			this.IssuedDate = issuedDate;
 
-			this.locations = new ReadOnlyCollection<Location>((from location in locations
+			this.Locations = new ReadOnlyCollection<Location>((from location in locations
 															   where location != null
 															   orderby location.Latitude descending, 
 																	   location.Longitude
-															   select location).ToArray());
+															   select location)
+															  .ToArray());
 		}
 		#endregion
 	}
