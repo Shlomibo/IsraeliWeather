@@ -39,7 +39,10 @@
   <ItemGroup>
     <Compile Include="CityDailyForecasts\Forecast.cs" />
     <Compile Include="CityDailyForecasts\Forecasts.cs" />
-    <Compile Include="CityDailyForecasts\Location.cs" />
+    <Compile Include="GeneralForecast.cs" />
+    <Compile Include="GeneralForecasts\DailyForecast.cs" />
+    <Compile Include="GeneralForecasts\GeneralForecast.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="CityForecasts.cs" />
     <Compile Include="DataFile.cs" />
     <Compile Include="HourlyLocalForecast.cs" />

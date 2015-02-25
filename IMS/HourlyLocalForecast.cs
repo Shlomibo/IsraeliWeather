@@ -98,7 +98,7 @@ namespace IMS
 
 			return new HourlyForecast(
 				forecasts: forecasts,
-				location: new Location(
+				location: new LocalForecasts.Location(
 					name,
 					latitude,
 					longitude,

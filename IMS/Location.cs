@@ -1,11 +1,12 @@
-﻿using System;
+﻿using IMS.CityDailyForecasts;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IMS.CityDailyForecasts
+namespace IMS
 {
 	public sealed class Location
 	{
